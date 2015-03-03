@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.richeninfo.mongodbutils;
+package org.shenjitang.mongodbutils;
 
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;

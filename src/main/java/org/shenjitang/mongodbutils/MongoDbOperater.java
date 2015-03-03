@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.richeninfo.mongodbutils;
+package org.shenjitang.mongodbutils;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -17,7 +17,6 @@ import com.mongodb.gridfs.GridFS;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSInputFile;
 import com.mongodb.util.JSON;
-import com.richeninfo.beanutils.BeanUtilEx;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

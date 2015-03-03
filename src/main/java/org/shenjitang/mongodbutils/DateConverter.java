@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.richeninfo.beanutils;
+package org.shenjitang.mongodbutils;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
