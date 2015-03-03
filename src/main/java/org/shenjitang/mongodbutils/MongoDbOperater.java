@@ -6,6 +6,7 @@
 
 package org.shenjitang.mongodbutils;
 
+import org.shenjitang.mongodbutils.beanutil.BeanUtilEx;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;

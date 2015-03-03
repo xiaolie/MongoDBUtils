@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.shenjitang.mongodbutils;
+package org.shenjitang.mongodbutils.beanutil;
 
 import java.beans.PropertyDescriptor;
 import java.math.BigDecimal;
