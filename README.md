@@ -9,7 +9,7 @@ spring 构造<br>
   \<bean id="mongoClient" class="com.mongodb.MongoClient"\\> <br>
   ... <br>
   \<\\bean\> <br>
-  \<bean id="mongoDbOperation" class="com.richeninfo.mongodbutils.MongoDbOperater"\> <br>
+  \<bean id="ope" class="com.richeninfo.mongodbutils.MongoDbOperater"\> <br>
 <br>  
 使用：
 String sql = "select * from colName where name='tom' and age>15 and score between (80, 100) and city in ("shanghai", "beijing", "guangzhou");<br>
