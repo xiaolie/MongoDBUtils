@@ -9,7 +9,7 @@ spring 构造<br>
   \<bean id="mongoClient" class="com.mongodb.MongoClient"\\> <br>
   ... <br>
   \<\\bean\> <br>
-  \<bean id="ope" class="com.richeninfo.mongodbutils.MongoDbOperater"\> <br>
+  \<bean id="ope" class="org.shenjitang.mongodbutils.MongoDbOperater"\> <br>
 <br>  
 特性：<br>  
 1，支持sql语法的增删改查<br>  
