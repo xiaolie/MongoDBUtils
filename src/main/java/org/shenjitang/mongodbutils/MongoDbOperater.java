@@ -46,6 +46,7 @@ import net.sf.jsqlparser.statement.update.Update;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.DateConverter;
+import org.apache.commons.beanutils.converters.IntegerConverter;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.bson.BasicBSONObject;
@@ -157,6 +158,7 @@ public class MongoDbOperater {
         }
         T obj = clazz.newInstance();
         ConvertUtils.register(new DateConverter(null), Date.class);
+        ConvertUtils.register(new IntegerConverter(null), Integer.class);
         BeanUtils.populate(obj, map);
         return obj;
     }
@@ -249,6 +251,7 @@ public class MongoDbOperater {
         }
         T obj = clazz.newInstance();
         ConvertUtils.register(new DateConverter(null), Date.class);
+        ConvertUtils.register(new IntegerConverter(null), Integer.class);
         BeanUtils.populate(obj, map.toMap());
         return obj;
     }
@@ -503,6 +506,9 @@ public class MongoDbOperater {
         InputStream input = gfile.getInputStream();
         try {
             File f = new File(fileName);
+            if (!f.exists()) {
+                f.createNewFile();
+            }
             OutputStream output = new FileOutputStream(f);
             byte[] bytes = new byte[1024];
             int read = 0;

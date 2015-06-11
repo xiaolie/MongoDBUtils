@@ -77,7 +77,7 @@ public class Sql2MongoExpressVisitor extends ExpressionVisitorAdapter {
                     ((DBObject)query.get(field)).put(opt, value);
                 } else {
                     DBObject optObj = new BasicDBObject(opt, value);
-                    query.put(left.toString(), optObj);
+                    query.put(field, optObj);
                 }
             } else {
                 String field = left.toString();
@@ -85,12 +85,17 @@ public class Sql2MongoExpressVisitor extends ExpressionVisitorAdapter {
                     ((DBObject)query.get(field)).put(opt, right);
                 } else {
                     DBObject optObj = new BasicDBObject(opt, right);
-                    query.put(left.toString(), optObj);
+                    query.put(field, optObj);
                 }
             }
         } catch (Exception e) {
-            DBObject optObj = new BasicDBObject(opt, right);
-            query.put(left.toString(), optObj);
+            String field = left.toString();
+            if (query.containsField(field)) {
+                ((DBObject)query.get(field)).put(opt, right);
+            } else {
+                DBObject optObj = new BasicDBObject(opt, right);
+                query.put(field, optObj);
+            }
             //throw new RuntimeException("表达式值没有value", e);
         }
     }
