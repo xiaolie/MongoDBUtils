@@ -566,11 +566,19 @@ public class MongoDbOperater {
         MongoClient mongoClient = new MongoClient("localhost", 27017);
         DB db = mongoClient.getDB("test");
         DBCollection coll = db.getCollection("rztest");
-        String sql = "select * from table1 where name='aaa' and age>=18 and foot in (1,2,3) and abc in ('a1','a2','a3') order by age,name limit 123";
+
+        String sql = "select * from table1 where name='aaa' and age between 20 and 30 and haha = 'ss'";
+        //String sql = "select * from table1 where name='aaa' and age >= 20 and age <= 30";
         MongoDbOperater ope = new MongoDbOperater();
         ope.setMongoClient(mongoClient);
         QueryInfo info = ope.sql2QueryInfo("abc", sql);
         System.out.println(info.debugStr());
+        
+
+        sql = "select * from table1 where name='aaa' and age>=18 and foot in (1,2,3) and abc in ('a1','a2','a3') order by age,name limit 123";
+        info = ope.sql2QueryInfo("abc", sql);
+        System.out.println(info.debugStr());
+        
 
         sql = "select * from algoflow_instance_log where functionName='f1' and reuseResult=false and returnCode=0 and action='LEAVE' order by timestamp desc limit 100";
         info = ope.sql2QueryInfo("abc", sql);

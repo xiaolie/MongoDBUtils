@@ -72,11 +72,21 @@ public class Sql2MongoExpressVisitor extends ExpressionVisitorAdapter {
             Method getValueMethod = right.getClass().getMethod("getValue");
             if (getValueMethod != null) {
                 Object value = getValueMethod.invoke(right);
-                DBObject optObj = new BasicDBObject(opt, value);
-                query.put(left.toString(), optObj);
+                String field = left.toString();
+                if (query.containsField(field)) {
+                    ((DBObject)query.get(field)).put(opt, value);
+                } else {
+                    DBObject optObj = new BasicDBObject(opt, value);
+                    query.put(left.toString(), optObj);
+                }
             } else {
-                DBObject optObj = new BasicDBObject(opt, right);
-                query.put(left.toString(), optObj);
+                String field = left.toString();
+                if (query.containsField(field)) {
+                    ((DBObject)query.get(field)).put(opt, right);
+                } else {
+                    DBObject optObj = new BasicDBObject(opt, right);
+                    query.put(left.toString(), optObj);
+                }
             }
         } catch (Exception e) {
             DBObject optObj = new BasicDBObject(opt, right);
@@ -108,7 +118,7 @@ public class Sql2MongoExpressVisitor extends ExpressionVisitorAdapter {
         Expression start = expr.getBetweenExpressionStart();
         Expression end = expr.getBetweenExpressionEnd();
         toMongoQuery(left, start, "$gte");
-        toMongoQuery(left, start, "$lte");
+        toMongoQuery(left, end, "$lte");
     }
     
     @Override
